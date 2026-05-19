@@ -38,7 +38,7 @@ function getPostContent(id: string) {
       title: blogContent.title,
       content: blogContent.content,
       region: [entry.regionName, entry.districtName, entry.neighborhood],
-      author: "베이비 에디터",
+      author: "레깅스 에디터",
       createdAt: `2024-${String((hashString(entry.seed) % 12) + 1).padStart(2, '0')}-${String((hashString(entry.seed) % 28) + 1).padStart(2, '0')}`,
       category: "블로그" as const,
       fullLocationName
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
   
   return {
-    title: `${post.title} | 베이비출장마사지`,
+    title: `${post.title} | 레깅스출장마사지`,
     description: post.content.replace(/<[^>]*>/g, '').slice(0, 160),
   }
 }
@@ -189,7 +189,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
                   {post.fullLocationName} 출장마사지 예약
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  베이비출장마사지 | 24시간 운영 | 100% 후불제
+                  레깅스출장마사지 | 24시간 운영 | 100% 후불제
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <a href="tel:010-5765-9956">

@@ -57,41 +57,41 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const districtName = getDistrictDisplayName(district.name)
   
   // 경기도 [동/읍 단위] 페이지 메타태그 공식
-  // {{구}} {{동읍면}}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지
-  // {{시}} {{동읍면}}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지
+  // {{구}} {{동읍면}}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
+  // {{시}} {{동읍면}}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
   if (isGyeonggi) {
     if (hasGu && guName) {
-      // 7대 도시 구가 있는 동: 원미구 상동출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지
+      // 7대 도시 구가 있는 동: 원미구 상동출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
       const guDongKeyword = `${guName} ${neighborhood}`
       const canonicalUrl = `https://babyoutcallmassage.com/${region.slug}/${district.slug}/${encodeURIComponent(neighborhood)}`
       return {
-        title: `${guDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지`,
-        description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${guDongKeyword}출장마사지 전문 브랜드, 베이비출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
+        title: `${guDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
+        description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${guDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
         keywords: `${guDongKeyword}출장마사지, ${guDongKeyword}출장안마, ${guDongKeyword}홈타이, ${neighborhood}스웨디시, ${guName}출장마사지`,
         alternates: {
           canonical: canonicalUrl,
         },
         openGraph: {
-          title: `${guDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지`,
-          description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${guDongKeyword}출장마사지 전문 브랜드, 베이비출장마사지입니다.`,
+          title: `${guDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
+          description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${guDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`,
           url: canonicalUrl,
           images: [{ url: 'https://babyoutcallmassage.com/og-image.jpg', width: 1200, height: 630, alt: `${guDongKeyword} 출장마사지` }],
         },
       }
     } else {
-      // 일반 시의 동: 파주시 조리읍출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지
+      // 일반 시의 동: 파주시 조리읍출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
       const siDongKeyword = `${districtName} ${neighborhood}`
       const canonicalUrl = `https://babyoutcallmassage.com/${region.slug}/${district.slug}/${encodeURIComponent(neighborhood)}`
       return {
-        title: `${siDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지`,
-        description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${siDongKeyword}출장마사지 전문 브랜드, 베이비출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
+        title: `${siDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
+        description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${siDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
         keywords: `${siDongKeyword}출장마사지, ${siDongKeyword}출장안마, ${siDongKeyword}홈타이, ${neighborhood}스웨디시, ${districtName}출장마사지`,
         alternates: {
           canonical: canonicalUrl,
         },
         openGraph: {
-          title: `${siDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지`,
-          description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${siDongKeyword}출장마사지 전문 브랜드, 베이비출장마사지입니다.`,
+          title: `${siDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
+          description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${siDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`,
           url: canonicalUrl,
           images: [{ url: 'https://babyoutcallmassage.com/og-image.jpg', width: 1200, height: 630, alt: `${siDongKeyword} 출장마사지` }],
         },
@@ -99,19 +99,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
   
-  // 서울/인천 페이지: 용산구 이태원동출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지
+  // 서울/인천 페이지: 용산구 이태원동출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
   const fullLocationKeyword = `${district.name} ${neighborhood}`
   const canonicalUrl = `https://babyoutcallmassage.com/${region.slug}/${district.slug}/${encodeURIComponent(neighborhood)}`
   return {
-    title: `${fullLocationKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지`,
-    description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${fullLocationKeyword}출장마사지 전문 브랜드, 베이비출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
+    title: `${fullLocationKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
+    description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${fullLocationKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
     keywords: `${fullLocationKeyword}출장마사지, ${neighborhood}출장안마, ${neighborhood}스웨디시, ${neighborhood}홈타이, ${districtName}출장마사지`,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${fullLocationKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지`,
-      description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${fullLocationKeyword}출장마사지 전문 브랜드, 베이비출장마사지입니다.`,
+      title: `${fullLocationKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
+      description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${fullLocationKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`,
       url: canonicalUrl,
       images: [{ url: 'https://babyoutcallmassage.com/og-image.jpg', width: 1200, height: 630, alt: `${fullLocationKeyword} 출장마사지` }],
     },
@@ -190,7 +190,7 @@ export default async function NeighborhoodPage({ params }: PageProps) {
             
             {/* 구글 로봇 매칭용 본문 첫 줄 - 타이틀 맨 앞 키워드와 100% 일치 */}
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 <strong>{targetLocationKeyword}출장마사지</strong> 전문 브랜드, 베이비출장마사지입니다.
+              서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 <strong>{targetLocationKeyword}출장마사지</strong> 전문 브랜드, 레깅스출장마사지입니다.
             </p>
             
             {/* Trust Badges */}
@@ -233,19 +233,19 @@ export default async function NeighborhoodPage({ params }: PageProps) {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-              {fullLocationDisplay}출장마사지 <span className="text-primary">베이비마사지</span> 소개
+              {fullLocationDisplay}출장마사지 <span className="text-primary">레깅스마사지</span> 소개
             </h2>
             
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="mb-4">
-                안녕하세요, {hasGu ? `${region.name} ${cityName} ${guName} ${neighborhood}` : `${region.name} ${district.name} ${neighborhood}`} 지역 출장마사지 전문 베이비출장마사지입니다.
+                안녕하세요, {hasGu ? `${region.name} ${cityName} ${guName} ${neighborhood}` : `${region.name} ${district.name} ${neighborhood}`} 지역 출장마사지 전문 레깅스출장마사지입니다.
               </p>
               <p className="mb-4">
-                저희 베이비출장마사지는 {fullLocationDisplay} 및 {hasGu ? `${cityName} ${guName}` : district.name} 전지역을 대상으로 24시간 프리미엄 출장안마 서비스를 제공하고 있습니다. 
+                저희 레깅스출장마사지는 {fullLocationDisplay} 및 {hasGu ? `${cityName} ${guName}` : district.name} 전지역을 대상으로 24시간 프리미엄 출장안마 서비스를 제공하고 있습니다. 
                 철저하게 검증된 전문 테라피스트들이 고객님의 피로와 스트레스를 해소해 드립니다.
               </p>
               <p className="mb-4">
-                {fullLocationDisplay}에서 출장마사지를 찾고 계신다면 베이비출장마사지를 선택해 주세요.
+                {fullLocationDisplay}에서 출장마사지를 찾고 계신다면 레깅스출장마사지를 선택해 주세요.
                 100% 후불제로 운영되며, 전화 한 통이면 30분 이내 {shortLocationDisplay} 어디든 방문해 드립니다.
               </p>
               <p>

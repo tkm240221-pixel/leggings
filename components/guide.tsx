@@ -6,7 +6,7 @@ export function Guide() {
       step: 1,
       icon: <Search className="w-6 h-6" />,
       title: "홈페이지 접속",
-      description: "PC나 모바일에서 '베이비마사지'를 검색하고 홈페이지에 접속합니다.",
+      description: "PC나 모바일에서 '레깅스마사지'를 검색하고 홈페이지에 접속합니다.",
     },
     {
       step: 2,
@@ -39,7 +39,7 @@ export function Guide() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            베이비마사지 <span className="text-primary">이용 안내</span>
+            레깅스마사지 <span className="text-primary">이용 안내</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             간단한 5단계로 프리미엄 출장마사지를 이용하세요
@@ -90,7 +90,7 @@ export function Guide() {
 
         <div className="mt-12 bg-primary/5 border border-primary/20 rounded-xl p-6 max-w-2xl mx-auto text-center">
           <p className="text-foreground font-medium">
-            ※ 베이비마사지는 예약금 등의 명목으로 선입금을 일절 요구하지 않습니다.
+            ※ 레깅스마사지는 예약금 등의 명목으로 선입금을 일절 요구하지 않습니다.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             유의해주세요.

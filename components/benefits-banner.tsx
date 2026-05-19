@@ -37,7 +37,7 @@ export function BenefitsBanner() {
   return (
     <section className="py-12 bg-primary">
       <div className="container mx-auto px-4">
-        <h2 className="sr-only">베이비출장마사지 핵심 장점</h2>
+        <h2 className="sr-only">레깅스출장마사지 핵심 장점</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {benefits.map((benefit) => (
             <div

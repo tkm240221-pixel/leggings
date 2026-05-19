@@ -111,7 +111,7 @@ export function DynamicBlogSection({
             {fullLocationName} <span className="text-primary">실제 이용 후기</span>
           </h2>
           <p className="text-center text-muted-foreground mb-8">
-            {fullLocationName} 베이비출장마사지를 이용하신 손님들의 생생한 후기
+            {fullLocationName} 레깅스출장마사지를 이용하신 손님들의 생생한 후기
           </p>
           
           <div className="space-y-4">
@@ -180,7 +180,7 @@ export function DynamicBlogSection({
           {/* 후기 하단 CTA */}
           <div className="mt-8 text-center">
             <p className="text-muted-foreground mb-4">
-              {fullLocationName}에서도 베이비출장마사지를 경험해보세요
+              {fullLocationName}에서도 레깅스출장마사지를 경험해보세요
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <a 

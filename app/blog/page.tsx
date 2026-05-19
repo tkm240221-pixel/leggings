@@ -64,7 +64,7 @@ function generateAllBlogs() {
       excerpt: blogContent.content.replace(/<[^>]*>/g, '').slice(0, 150) + "...",
       category: "블로그",
       region: [entry.regionName, entry.districtName, entry.neighborhood],
-      author: "베이비 에디터",
+      author: "레깅스 에디터",
       createdAt: `2024-${String((hashString(entry.seed) % 12) + 1).padStart(2, '0')}-${String((hashString(entry.seed) % 28) + 1).padStart(2, '0')}`,
       fullLocationName
     })
@@ -119,7 +119,7 @@ export default function BlogPage() {
           {/* 헤더 */}
           <div className="text-center mb-12">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              베이비출장마사지 블로그
+              레깅스출장마사지 블로그
             </h1>
             <p className="text-muted-foreground">
               마사지 정보와 실제 이용 후기를 확인하세요

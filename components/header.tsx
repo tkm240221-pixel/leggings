@@ -44,7 +44,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="text-xl md:text-2xl font-bold text-primary">
-              베이비출장마사지
+              레깅스출장마사지
             </span>
           </Link>
 

@@ -10,9 +10,9 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: '출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지',
-  description: '서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 출장마사지 전문 브랜드, 베이비출장마사지입니다. 30분 내 도착, 100% 후불제.',
-  keywords: '출장마사지, 출장안마, 홈타이, 24시홈타이안마, 베이비출장마사지, 서울출장마사지, 경기출장마사지, 인천출장마사지',
+  title: '출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지',
+  description: '서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 출장마사지 전문 브랜드, 레깅스출장마사지입니다. 30분 내 도착, 100% 후불제.',
+  keywords: '출장마사지, 출장안마, 홈타이, 24시홈타이안마, 레깅스출장마사지, 서울출장마사지, 경기출장마사지, 인천출장마사지',
   metadataBase: new URL('https://babyoutcallmassage.com'),
   icons: {
     icon: '/favicon.png',
@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: '출장마사지 | 프리미엄 24시홈타이안마 | 베이비출장마사지',
-    description: '서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 출장마사지 전문 브랜드, 베이비출장마사지입니다.',
+    title: '출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지',
+    description: '서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 출장마사지 전문 브랜드, 레깅스출장마사지입니다.',
     url: 'https://babyoutcallmassage.com',
-    siteName: '베이비출장마사지',
+    siteName: '레깅스출장마사지',
     locale: 'ko_KR',
     type: 'website',
   },
