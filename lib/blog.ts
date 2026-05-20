@@ -281,7 +281,7 @@ const blogContentTemplates = [
 </div>
 
 <h3>${info.vibe} ${n}에서의 출장마사지</h3>
-<p>${n}은 ${info.feature}라서 집에서 편하게 받으시는 게 더 효율적입니다. 특히 퇴근 후 피곤한 상태에서 다시 외��하는 것보다 집에서 받으시는 걸 추천드려요.</p>
+<p>${n}은 ${info.feature}라서 집에서 편하게 받으시는 게 더 효율적입니다. 특히 퇴근 후 피곤한 상태에서 다시 외출하는 것보다 집에서 받으시는 걸 추천드려요.</p>
 
 <div style="background-color: #FCE7F3; padding: 16px; border-radius: 8px; margin: 16px 0; border-left: 4px solid #EC4899;">
 <p style="font-weight: bold; color: #9D174D;">TIP: ${info.tip}</p>
@@ -385,7 +385,7 @@ const gyeonggiNeighborhoods: Record<string, string[]> = {
   "안양": ["평촌동", "비산동", "안양동", "호계동"],
   "부천": ["상동", "중동", "원미동", "소사동"],
   "화성": ["병점동", "동탄동", "봉담동", "향남읍"],
-  "평���": ["평택동", "고덕동", "비전동", "송탄동"],
+  "평택": ["평택동", "고덕동", "비전동", "송탄동"],
   "파주": ["야당동", "금촌동", "운정동", "교하동"],
   "김포": ["장기동", "구래동", "풍무동", "양촌읍"],
 }
@@ -556,7 +556,7 @@ blogPosts.push({
 <p>경기도 파주시 조리읍은 서울에서 약 40분 거리에 위치한 전원 주거지역입니다. 봉일천역을 중심으로 한적한 마을 분위기와 자연환경이 어우러져, 바쁜 일상에서 벗어나 여유를 즐기고자 하는 분들이 많이 거주하고 계십니다.</p>
 
 <h3>조리읍의 특징</h3>
-<p>조리읍은 파주시 남부에 위치하며, 봉일천리, 등원리, 오산리, 장곡리 등 여러 리(里)로 구성되어 있습니다. 특히 봉일천역 인근은 상업시설과 주거단지가 조화롭게 발전하고 있어 생활 편의성이 높아지고 있죠. 하지만 여전히 도시의 번잡함과는 거리가 먼, 평화로운 분위기를 유지하고 있습니다.</p>
+<p>조리읍은 파주시 남부에 위치하며, 봉일천리, 등원리, 오산리, 장곡리 등 여러 리(里)로 구성되어 있습니다. 특히 봉일천�� 인근은 상업시설과 주거단지가 조화롭게 발전하고 있어 생활 편의성이 높아지고 있죠. 하지만 여전히 도시의 번잡함과는 거리가 먼, 평화로운 분위기를 유지하고 있습니다.</p>
 
 <div style="background-color: #FEF9C3; padding: 16px; border-radius: 8px; margin: 16px 0; border-left: 4px solid #EAB308;">
 <p style="font-weight: bold; color: #854D0E;">조리읍 주민들의 건강 고민</p>
@@ -694,7 +694,7 @@ blogPosts.push({
 // 파주 조리읍 후기 2 - 디시인사이드 말투
 blogPosts.push({
   id: `review-paju-jorieup-2`,
-  title: "[조리읍] ��원주택��데도 오시네요 감사합니다 ㅠㅠ",
+  title: "[조리읍] 전원주택인데도 오시네요 감사합니다",
   excerpt: "파주 조리읍 전원주택 거주자 실제 이용 후기.",
   content: `
 <p>아 나 조리읍 전원주택 사는데</p>
@@ -807,7 +807,7 @@ export function generateDynamicContent(district: string, neighborhood: string, t
     return {
       id: `dynamic-review-${district}-${neighborhood}-${Date.now()}`,
       title: reviewTitleTemplate(neighborhood),
-      excerpt: `${district} ${neighborhood} 실제 이�� 후기.`,
+      excerpt: `${district} ${neighborhood} 실제 이용 후기.`,
       content: reviewContentTemplate(district, neighborhood, info),
       author: reviewAuthors[idx % reviewAuthors.length],
       createdAt: new Date().toISOString(),
