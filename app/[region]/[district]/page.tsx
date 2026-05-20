@@ -129,17 +129,64 @@ export default async function DistrictPage({ params }: PageProps) {
   // 타이틀용 지역 키워드 (메타 타이틀 맨 앞과 100% 일치)
   const targetLocationKeyword = hasGu ? guName : districtName
 
+  // 페이지별 이미지 필터 변화 (밝기/대비를 slug 기반으로 미세 조정)
+  const getImageFilter = (slug: string) => {
+    const hash = slug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    const brightness = 0.9 + (hash % 20) / 100 // 0.90 ~ 1.09
+    const contrast = 0.95 + (hash % 15) / 100 // 0.95 ~ 1.09
+    return `brightness(${brightness}) contrast(${contrast})`
+  }
+  const imageFilter = getImageFilter(districtSlug)
+
   return (
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-b from-primary/10 to-background">
-        <div className="container mx-auto px-4">
+      {/* Hero Section with Background Image */}
+      <section className="relative pt-24 pb-16 min-h-[70vh] flex items-center">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: "url('https://i.ibb.co/v4pB1x5r/image.jpg')",
+            filter: imageFilter
+          }}
+        />
+        
+        {/* Gradient Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
               <MapPin className="w-4 h-4" />
               {hasGu ? `${region.name} ${cityName} ${guName}` : `${region.name} ${district.name}`}
+            </div>
+            
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 text-balance">
+              <span className="text-primary">{targetLocationKeyword}</span>출장마사지
+            </h1>
+            
+            {/* 구글 로봇 매칭용 본문 첫 줄 - 타이틀 맨 앞 키워드와 100% 일치 */}
+            <p className="text-lg text-white/80 mb-8 leading-relaxed">
+              서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 <strong className="text-white">{targetLocationKeyword}출장마사지</strong> 전문 브랜드, 레깅스출장마사지입니다.
+            </p>
+            
+            {/* Trust Badges */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <Clock className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-white">30분 이내 출장</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <Shield className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-white">100% 후불제</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <Star className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-white">검증된 관리사</span>
+              </div>
             </div>
             
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 text-balance">
