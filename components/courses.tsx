@@ -1,35 +1,35 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Phone, Star, Sparkles } from "lucide-react"
+import { Phone, Star, Sparkles, Crown } from "lucide-react"
 
 export function Courses() {
   return (
-    <section id="courses" className="py-20 md:py-28 bg-gradient-to-b from-background to-secondary/30">
+    <section id="courses" className="py-20 md:py-28 bg-[#0A0A0A]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            레깅스마사지 <span className="text-primary">출장 안마코스</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#E0E0E0] mb-4">
+            레깅스마사지 <span className="text-[#8B0000]">출장 안마코스</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-[#A0A0A0]">
             합리적인 가격으로 최상의 힐링을 경험하세요
           </p>
         </div>
 
         <div className="space-y-8 max-w-5xl mx-auto">
-          {/* 믹스 코스 - 핑크 테마 (베스트) */}
+          {/* VIP 황제코스 - Deep Burgundy Accent */}
           <div className="relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-              <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg animate-pulse">
-                <Sparkles className="w-4 h-4" />
-                강력추천
+              <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#8B0000] to-[#A52A2A] text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg animate-pulse">
+                <Crown className="w-4 h-4" />
+                BEST
               </span>
             </div>
-            <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 border-2 border-pink-300 shadow-lg">
-              <h3 className="text-xl md:text-2xl font-bold text-center mb-4 text-pink-700">
-                건식+힐링+풋 (믹스코스)
+            <div className="bg-[#161616] rounded-2xl p-8 border border-[#8B0000]/50 shadow-lg shadow-[#8B0000]/10">
+              <h3 className="text-xl md:text-2xl font-bold text-center mb-6 text-[#E0E0E0]">
+                <span className="text-[#8B0000]">VIP 황제코스</span> (타이+힐링+풋)
               </h3>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 {[
                   { time: "60분", price: "100,000원" },
                   { time: "90분", price: "120,000원", best: true },
@@ -38,24 +38,24 @@ export function Courses() {
                 ].map((course) => (
                   <div
                     key={course.time}
-                    className={`relative bg-white rounded-xl p-4 md:p-6 text-center transition-all hover:scale-105 ${
+                    className={`relative bg-[#0A0A0A] rounded-xl p-5 md:p-7 text-center transition-all hover:scale-105 ${
                       course.best
-                        ? "ring-2 ring-pink-500 shadow-xl"
-                        : "border border-pink-200 hover:border-pink-400"
+                        ? "ring-2 ring-[#8B0000] shadow-xl shadow-[#8B0000]/20"
+                        : "border border-[#2A2A2A] hover:border-[#8B0000]/50"
                     }`}
                   >
                     {course.best && (
                       <div className="absolute -top-2 left-1/2 -translate-x-1/2">
-                        <span className="inline-flex items-center gap-1 bg-pink-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+                        <span className="inline-flex items-center gap-1 bg-[#8B0000] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
                           <Star className="w-3 h-3 fill-current" />
                           인기
                         </span>
                       </div>
                     )}
-                    <div className="text-2xl md:text-4xl font-bold text-pink-600 mb-1">
+                    <div className="text-2xl md:text-4xl font-bold text-[#8B0000] mb-2">
                       {course.time}
                     </div>
-                    <div className="text-lg md:text-2xl font-bold text-foreground">
+                    <div className="text-lg md:text-2xl font-bold text-[#E0E0E0]">
                       {course.price}
                     </div>
                   </div>
@@ -64,12 +64,12 @@ export function Courses() {
             </div>
           </div>
 
-          {/* 힐링 아로마 코스 - 블루/라벤더 테마 */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border-2 border-blue-200">
-            <h3 className="text-xl md:text-2xl font-bold text-center mb-4 text-blue-700">
-              힐링 아로마
+          {/* 힐링 스웨디시 - Deep Indigo Accent */}
+          <div className="bg-[#161616] rounded-2xl p-8 border border-[#4B0082]/50">
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-6 text-[#E0E0E0]">
+              <span className="text-[#4B0082]">힐링 스웨디시</span>
             </h3>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {[
                 { time: "60분", price: "80,000원" },
                 { time: "90분", price: "100,000원" },
@@ -77,12 +77,12 @@ export function Courses() {
               ].map((course) => (
                 <div
                   key={course.time}
-                  className="bg-white rounded-xl p-4 md:p-6 text-center border border-blue-200 hover:border-blue-400 transition-all hover:scale-105"
+                  className="bg-[#0A0A0A] rounded-xl p-5 md:p-7 text-center border border-[#2A2A2A] hover:border-[#4B0082]/50 transition-all hover:scale-105"
                 >
-                  <div className="text-2xl md:text-4xl font-bold text-blue-600 mb-1">
+                  <div className="text-2xl md:text-4xl font-bold text-[#4B0082] mb-2">
                     {course.time}
                   </div>
-                  <div className="text-lg md:text-2xl font-bold text-foreground">
+                  <div className="text-lg md:text-2xl font-bold text-[#E0E0E0]">
                     {course.price}
                   </div>
                 </div>
@@ -90,12 +90,12 @@ export function Courses() {
             </div>
           </div>
 
-          {/* 건식 코스 - 그레이/베이지 테마 */}
-          <div className="bg-gradient-to-br from-stone-50 to-amber-50 rounded-2xl p-6 border-2 border-stone-200">
-            <h3 className="text-xl md:text-2xl font-bold text-center mb-4 text-stone-700">
-              건식
+          {/* 건식 마사지 - Dark Slate Accent */}
+          <div className="bg-[#161616] rounded-2xl p-8 border border-[#2F4F4F]/50">
+            <h3 className="text-xl md:text-2xl font-bold text-center mb-6 text-[#E0E0E0]">
+              <span className="text-[#2F4F4F]">건식 마사지</span>
             </h3>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {[
                 { time: "60분", price: "70,000원" },
                 { time: "90분", price: "90,000원" },
@@ -103,12 +103,12 @@ export function Courses() {
               ].map((course) => (
                 <div
                   key={course.time}
-                  className="bg-white rounded-xl p-4 md:p-6 text-center border border-stone-200 hover:border-stone-400 transition-all hover:scale-105"
+                  className="bg-[#0A0A0A] rounded-xl p-5 md:p-7 text-center border border-[#2A2A2A] hover:border-[#2F4F4F]/50 transition-all hover:scale-105"
                 >
-                  <div className="text-2xl md:text-4xl font-bold text-stone-600 mb-1">
+                  <div className="text-2xl md:text-4xl font-bold text-[#5F9F9F] mb-2">
                     {course.time}
                   </div>
-                  <div className="text-lg md:text-2xl font-bold text-foreground">
+                  <div className="text-lg md:text-2xl font-bold text-[#E0E0E0]">
                     {course.price}
                   </div>
                 </div>
@@ -119,12 +119,12 @@ export function Courses() {
 
         <div className="text-center mt-10">
           <a href="tel:010-2871-2457">
-            <Button size="lg" className="gap-2 text-lg px-8">
+            <Button size="lg" className="gap-2 text-lg px-8 bg-[#8B0000] hover:bg-[#A52A2A] text-white">
               <Phone className="w-5 h-5" />
               지금 예약하기
             </Button>
           </a>
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="mt-4 text-sm text-[#A0A0A0]">
             * 출장비 별도 / 지역에 따라 추가 요금이 발생할 수 있습니다
           </p>
         </div>
