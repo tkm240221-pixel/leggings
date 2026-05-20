@@ -202,90 +202,125 @@ export default async function DistrictPage({ params }: PageProps) {
       </section>
       
       {/* Course Section */}
-      <section className="py-16">
+      <section className="py-16 bg-[#0A0A0A]">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-            {fullLocationDisplay}출장마사지 <span className="text-primary">코스 안내</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[#E0E0E0]">
+            {fullLocationDisplay}출장마사지 <span className="text-[#8B0000]">코스 안내</span>
           </h2>
           
-          <div className="space-y-8 max-w-4xl mx-auto">
-            {/* 믹스 코스 */}
-            <div>
-              <h3 className="text-xl font-bold text-center mb-4">건식+힐링+풋 (믹스코스)</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { time: "60분", price: "100,000원" },
-                  { time: "90분", price: "120,000원", popular: true },
-                  { time: "120분", price: "150,000원" },
-                  { time: "150분", price: "180,000원" },
-                ].map((course) => (
-                  <div
-                    key={course.time}
-                    className={`relative p-4 rounded-xl text-center ${
-                      course.popular
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-card border"
-                    }`}
-                  >
-                    {course.popular && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-xs px-3 py-1 rounded-full font-medium">
-                        인기
-                      </span>
-                    )}
-                    <p className="text-xl font-bold mb-1">{course.time}</p>
-                    <p className={course.popular ? "text-primary-foreground/80" : "text-muted-foreground"}>
-                      {course.price}
-                    </p>
-                  </div>
-                ))}
+          <div className="space-y-8 max-w-5xl mx-auto">
+            {/* VIP 황제코스 - Deep Burgundy Accent */}
+            <div className="relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#8B0000] to-[#A52A2A] text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
+                  BEST
+                </span>
+              </div>
+              <div className="bg-[#161616] rounded-2xl p-8 border border-[#8B0000]/50 shadow-lg shadow-[#8B0000]/10">
+                <h3 className="text-xl md:text-2xl font-bold text-center mb-6 text-[#E0E0E0]">
+                  <span className="text-[#8B0000]">VIP 황제코스</span> (타이+힐링+풋)
+                </h3>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                  {[
+                    { time: "60분", price: "100,000원" },
+                    { time: "90분", price: "120,000원", best: true },
+                    { time: "120분", price: "150,000원" },
+                    { time: "150분", price: "180,000원" },
+                  ].map((course) => (
+                    <div
+                      key={course.time}
+                      className={`relative bg-[#0A0A0A] rounded-xl p-5 md:p-7 text-center transition-all hover:scale-105 ${
+                        course.best
+                          ? "ring-2 ring-[#8B0000] shadow-xl shadow-[#8B0000]/20"
+                          : "border border-[#2A2A2A] hover:border-[#8B0000]/50"
+                      }`}
+                    >
+                      {course.best && (
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+                          <span className="inline-flex items-center gap-1 bg-[#8B0000] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+                            인기
+                          </span>
+                        </div>
+                      )}
+                      <div className="text-2xl md:text-4xl font-bold text-[#8B0000] mb-2">
+                        {course.time}
+                      </div>
+                      <div className="text-lg md:text-2xl font-bold text-[#E0E0E0]">
+                        {course.price}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             
-            {/* 힐링 아로마 코스 */}
-            <div>
-              <h3 className="text-xl font-bold text-center mb-4">힐링 아로마</h3>
-              <div className="grid grid-cols-3 gap-4">
+            {/* 힐링 스웨디시 - Deep Indigo Accent */}
+            <div className="bg-[#161616] rounded-2xl p-8 border border-[#4B0082]/50">
+              <h3 className="text-xl md:text-2xl font-bold text-center mb-6 text-[#E0E0E0]">
+                <span className="text-[#4B0082]">힐링 스웨디시</span>
+              </h3>
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {[
                   { time: "60분", price: "80,000원" },
                   { time: "90분", price: "100,000원" },
                   { time: "120분", price: "120,000원" },
                 ].map((course) => (
-                  <div key={course.time} className="p-4 rounded-xl text-center bg-card border">
-                    <p className="text-xl font-bold mb-1">{course.time}</p>
-                    <p className="text-muted-foreground">{course.price}</p>
+                  <div
+                    key={course.time}
+                    className="bg-[#0A0A0A] rounded-xl p-5 md:p-7 text-center border border-[#2A2A2A] hover:border-[#4B0082]/50 transition-all hover:scale-105"
+                  >
+                    <div className="text-2xl md:text-4xl font-bold text-[#4B0082] mb-2">
+                      {course.time}
+                    </div>
+                    <div className="text-lg md:text-2xl font-bold text-[#E0E0E0]">
+                      {course.price}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
             
-            {/* 건식 코스 */}
-            <div>
-              <h3 className="text-xl font-bold text-center mb-4">건식</h3>
-              <div className="grid grid-cols-3 gap-4">
+            {/* 건식 마사지 - Dark Slate Accent */}
+            <div className="bg-[#161616] rounded-2xl p-8 border border-[#2F4F4F]/50">
+              <h3 className="text-xl md:text-2xl font-bold text-center mb-6 text-[#E0E0E0]">
+                <span className="text-[#5F9F9F]">건식 마사지</span>
+              </h3>
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {[
                   { time: "60분", price: "70,000원" },
                   { time: "90분", price: "90,000원" },
                   { time: "120분", price: "110,000원" },
                 ].map((course) => (
-                  <div key={course.time} className="p-4 rounded-xl text-center bg-card border">
-                    <p className="text-xl font-bold mb-1">{course.time}</p>
-                    <p className="text-muted-foreground">{course.price}</p>
+                  <div
+                    key={course.time}
+                    className="bg-[#0A0A0A] rounded-xl p-5 md:p-7 text-center border border-[#2A2A2A] hover:border-[#2F4F4F]/50 transition-all hover:scale-105"
+                  >
+                    <div className="text-2xl md:text-4xl font-bold text-[#5F9F9F] mb-2">
+                      {course.time}
+                    </div>
+                    <div className="text-lg md:text-2xl font-bold text-[#E0E0E0]">
+                      {course.price}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
+          
+          <p className="mt-8 text-center text-sm text-[#A0A0A0]">
+            * 출장비 별도 / 지역에 따라 추가 요금이 발생할 수 있습니다
+          </p>
         </div>
       </section>
       
-      {/* Child Districts Section (시 메인 페이지용 - 하위 �� 목록) */}
+      {/* Child Districts Section (시 메인 페이지용 - 하위 구 목록) */}
       {isCityMain && childDistricts.length > 0 && (
-        <section className="py-16 bg-card">
+        <section className="py-16 bg-[#121212]">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
-              {district.name} <span className="text-primary">구별 출장마사지</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-[#E0E0E0]">
+              {district.name} <span className="text-[#8B0000]">구별 출장마사지</span>
             </h2>
-            <p className="text-center text-muted-foreground mb-12">
+            <p className="text-center text-[#A0A0A0] mb-12">
               {district.name} 전 지역 빠른 출장 서비스
             </p>
             
@@ -294,7 +329,7 @@ export default async function DistrictPage({ params }: PageProps) {
                 <Link
                   key={childDistrict.slug}
                   href={`/${region.slug}/${childDistrict.slug}`}
-                  className="bg-background hover:bg-primary/10 border rounded-lg px-4 py-4 text-center font-medium transition-colors hover:border-primary"
+                  className="bg-[#0A0A0A] hover:bg-[#8B0000]/10 border border-[#2A2A2A] rounded-lg px-4 py-4 text-center font-medium transition-colors hover:border-[#8B0000] text-[#E0E0E0]"
                 >
                   {childDistrict.name.split(" ")[1]}출장마사지
                 </Link>
@@ -306,12 +341,12 @@ export default async function DistrictPage({ params }: PageProps) {
       
       {/* Neighborhoods Section (일반 구 페이지용) */}
       {!isCityMain && district.neighborhoods.length > 0 && (
-        <section className="py-16 bg-card">
+        <section className="py-16 bg-[#121212]">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
-              {fullLocationDisplay} <span className="text-primary">지역별 출장마사지</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-[#E0E0E0]">
+              {fullLocationDisplay} <span className="text-[#8B0000]">지역별 출장마사지</span>
             </h2>
-            <p className="text-center text-muted-foreground mb-12">
+            <p className="text-center text-[#A0A0A0] mb-12">
               {fullLocationDisplay} 내 모든 동네에 빠르게 출장 가능합니다
             </p>
             
@@ -320,7 +355,7 @@ export default async function DistrictPage({ params }: PageProps) {
                 <Link
                   key={neighborhood}
                   href={`/${region.slug}/${district.slug}/${encodeURIComponent(neighborhood)}`}
-                  className="text-primary hover:text-primary/80 hover:underline transition-colors"
+                  className="text-[#8B0000] hover:text-[#A52A2A] hover:underline transition-colors"
                 >
                   {neighborhood}출장마사지
                 </Link>
@@ -332,11 +367,11 @@ export default async function DistrictPage({ params }: PageProps) {
       
       {/* 상위 시 페이지로 가기 (구 페이지용) */}
       {district.parentCity && (
-        <section className="py-8 bg-secondary/20">
+        <section className="py-8 bg-[#1A1A1A]">
           <div className="container mx-auto px-4 text-center">
             <Link
               href={`/${region.slug}/${districtSlug.split("-")[0]}`}
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium"
+              className="inline-flex items-center gap-2 text-[#8B0000] hover:text-[#A52A2A] font-medium"
             >
               ← {district.parentCity} 메인 페이지로 가기
             </Link>
@@ -346,17 +381,17 @@ export default async function DistrictPage({ params }: PageProps) {
       
       {/* Same City Districts (경기도 같은 시 내 다른 구) */}
       {sameCityDistricts.length > 0 && (
-        <section className="py-12 bg-secondary/30">
+        <section className="py-12 bg-[#161616]">
           <div className="container mx-auto px-4">
-            <h2 className="text-xl md:text-2xl font-bold text-center mb-6">
-              {district.parentCity} <span className="text-primary">다른 지역</span>
+            <h2 className="text-xl md:text-2xl font-bold text-center mb-6 text-[#E0E0E0]">
+              {district.parentCity} <span className="text-[#8B0000]">다른 지역</span>
             </h2>
             <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
               {sameCityDistricts.map((d) => (
                 <Link
                   key={d.slug}
                   href={`/${region.slug}/${d.slug}`}
-                  className="px-4 py-2 bg-card hover:bg-primary/10 rounded-full text-sm font-medium transition-colors hover:text-primary border"
+                  className="px-4 py-2 bg-[#0A0A0A] hover:bg-[#8B0000]/10 rounded-full text-sm font-medium transition-colors hover:text-[#8B0000] border border-[#2A2A2A] text-[#E0E0E0]"
                 >
                   {d.name.split(" ")[1]}출장마사지
                 </Link>
@@ -367,12 +402,12 @@ export default async function DistrictPage({ params }: PageProps) {
       )}
       
       {/* Other Districts in Region */}
-      <section className="py-16">
+      <section className="py-16 bg-[#0A0A0A]">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
-            {region.name} <span className="text-primary">다른 지역</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-[#E0E0E0]">
+            {region.name} <span className="text-[#8B0000]">다른 지역</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <p className="text-center text-[#A0A0A0] mb-12">
             {region.name} 전지역 출장마사지 서비스
           </p>
           
@@ -383,7 +418,7 @@ export default async function DistrictPage({ params }: PageProps) {
                 <Link
                   key={d.slug}
                   href={`/${region.slug}/${d.slug}`}
-                  className="bg-card hover:bg-secondary border rounded-lg px-4 py-3 text-center text-sm font-medium transition-colors"
+                  className="bg-[#121212] hover:bg-[#8B0000]/10 border border-[#2A2A2A] rounded-lg px-4 py-3 text-center text-sm font-medium transition-colors text-[#E0E0E0] hover:border-[#8B0000]"
                 >
                   {getDistrictDisplayName(d.name)}출장마사지
                 </Link>
@@ -400,24 +435,24 @@ export default async function DistrictPage({ params }: PageProps) {
         seed={`${region.slug}/${district.slug}`}
       />
       
-{/* CTA Section */}
-      <section className="py-16 bg-primary">
+      {/* CTA Section */}
+      <section className="py-16 bg-[#8B0000]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             지금 바로 예약하세요
           </h2>
-          <p className="text-primary-foreground/80 mb-8">
+          <p className="text-white/80 mb-8">
             {hasGu ? `${region.name} ${cityName} ${guName}` : `${region.name} ${district.name}`} 전지역 30분 이내 출장
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:010-2871-2457">
-              <Button size="lg" variant="secondary" className="gap-2 text-lg px-8">
+              <Button size="lg" className="gap-2 text-lg px-8 bg-white text-[#8B0000] hover:bg-white/90">
                 <Phone className="w-5 h-5" />
                 전화 문의하기
               </Button>
             </a>
             <a href="https://t.me/cc_9911" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="gap-2 text-lg px-8 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Button size="lg" variant="outline" className="gap-2 text-lg px-8 bg-transparent border-white text-white hover:bg-white hover:text-[#8B0000]">
                 <Send className="w-5 h-5" />
                 텔레그램 상담
               </Button>

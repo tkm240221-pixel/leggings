@@ -12,23 +12,21 @@ interface DetailHeroProps {
 export function DetailHero({ locationBadge, targetKeyword, description }: DetailHeroProps) {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-20">
-      {/* Background Image - Left Side with Mask Gradient (absolute positioned) */}
-      <div 
-        className="absolute left-0 top-0 bottom-0 w-full md:w-[55%] h-full"
+      {/* Background Image - Cropped to show left side (person), fades to right */}
+      <img 
+        src="https://i.ibb.co/Cp48CVYd/leggings-4-last.png"
+        alt="레깅스출장마사지"
+        className="absolute top-0 left-0 w-full h-full object-cover"
         style={{
-          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%)"
+          objectPosition: "left center",
+          maskImage: "linear-gradient(to right, black 50%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, black 50%, transparent 100%)",
+          zIndex: 0
         }}
-      >
-        <img 
-          src="https://i.ibb.co/Cp48CVYd/leggings-4-last.png"
-          alt="레깅스출장마사지"
-          className="w-full h-full object-cover object-top"
-        />
-      </div>
+      />
       
       {/* Dark overlay for text readability on all screens */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/50 to-[#0A0A0A]/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/50 to-[#0A0A0A]/80 z-[1]" />
 
       {/* Content - Always Centered */}
       <div className="container mx-auto px-4 py-16 relative z-10">
