@@ -15,9 +15,17 @@ export const metadata: Metadata = {
   keywords: '출장마사지, 출장안마, 홈타이, 24시홈타이안마, 레깅스출장마사지, 서울출장마사지, 경기출장마사지, 인천출장마사지',
   metadataBase: new URL('https://babyoutcallmassage.com'),
   icons: {
-    icon: '/favicon.png',
+    icon: [
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
+    ],
     shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/favicon.png', color: '#8B0000' },
+    ],
   },
   alternates: {
     canonical: 'https://babyoutcallmassage.com',
