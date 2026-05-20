@@ -189,9 +189,8 @@ const blogContentTemplates = [
 <h3>문의 및 예약</h3>
 <p>24시간 예약 가능합니다. 편하게 연락주세요!</p>
 <ul>
-<li>📞 전화: <a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">010-2871-2457</a></li>
-<li>💬 텔레그램: <a href="https://t.me/babyoutcallmassage" style="color: #EC4899; font-weight: bold;">@babyoutcallmassage</a></li>
-<li>💛 카카오톡: <a href="https://open.kakao.com/o/shgq1hhi" style="color: #EC4899; font-weight: bold;">오픈채팅 바로가기</a></li>
+<li><a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">전화 문의하기</a></li>
+<li><a href="https://t.me/cc_9911" style="color: #EC4899; font-weight: bold;">텔레그램 상담</a></li>
 </ul>
 `,
   (d: string, n: string, info: { feature: string; landmark: string; vibe: string; tip: string }) => `
@@ -221,8 +220,8 @@ const blogContentTemplates = [
 <h3>예약 안내</h3>
 <p>${d} ${n} 전지역 30분 내 방문! 24시간 예약 가능합니다.</p>
 <ul>
-<li>📞 전화: <a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">010-2871-2457</a></li>
-<li>💬 텔레그램: <a href="https://t.me/babyoutcallmassage" style="color: #EC4899; font-weight: bold;">@babyoutcallmassage</a></li>
+<li><a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">전화 문의하기</a></li>
+<li><a href="https://t.me/cc_9911" style="color: #EC4899; font-weight: bold;">텔레그램 상담</a></li>
 </ul>
 `,
   (d: string, n: string, info: { feature: string; landmark: string; vibe: string; tip: string }) => `
@@ -251,13 +250,13 @@ const blogContentTemplates = [
 <h3>새벽에도 예약 가능</h3>
 <p>${d} ${n} 24시간 출장 가능합니다. 야근 끝나고 새벽 2시, 3시에도 연락주세요!</p>
 <ul>
-<li>📞 전화: <a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">010-2871-2457</a></li>
-<li>💬 텔레그램: <a href="https://t.me/babyoutcallmassage" style="color: #EC4899; font-weight: bold;">@babyoutcallmassage</a></li>
-<li>💛 카카오톡: <a href="https://open.kakao.com/o/shgq1hhi" style="color: #EC4899; font-weight: bold;">오픈채팅</a></li>
+<li><a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">전화 문의하기</a></li>
+<li><a href="https://t.me/cc_9911" style="color: #EC4899; font-weight: bold;">텔레그램 상담</a></li>
+<li><a href="https://open.kakao.com/o/shgq1hhi" style="color: #EC4899; font-weight: bold;">카카오톡 상담</a></li>
 </ul>
 `,
   (d: string, n: string, info: { feature: string; landmark: string; vibe: string; tip: string }) => `
-<h2>${n} 주민들이 알아야 할 마사지 상���</h2>
+<h2>${n} 주민들이 알아야 할 마사지 상식</h2>
 <p>${info.feature}인 ${n}에 거주하시는 분들을 위한 마사지 기본 상식을 정리했습니다. ${info.landmark} 근처에 사시든, 다른 동네에 사시든 알아두시면 유용한 정보예요.</p>
 
 <h3>출장마사지 vs 샵마사지</h3>
@@ -291,8 +290,8 @@ const blogContentTemplates = [
 <h3>예약 문의</h3>
 <p>${d} ${n} 전지역 30분 내 방문! 100% 후불제로 안심하고 이용하세요.</p>
 <ul>
-<li>📞 전화: <a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">010-2871-2457</a></li>
-<li>💬 텔레그램: <a href="https://t.me/babyoutcallmassage" style="color: #EC4899; font-weight: bold;">@babyoutcallmassage</a></li>
+<li><a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">전화 문의하기</a></li>
+<li><a href="https://t.me/cc_9911" style="color: #EC4899; font-weight: bold;">텔레그램 상담</a></li>
 </ul>
 `,
   (d: string, n: string, info: { feature: string; landmark: string; vibe: string; tip: string }) => `
@@ -321,8 +320,8 @@ const blogContentTemplates = [
 <h3>문의</h3>
 <p>${d} ${n} 커플 마사지 예약은 아래로 연락주세요!</p>
 <ul>
-<li>📞 전화: <a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">010-2871-2457</a></li>
-<li>💛 카카오톡: <a href="https://open.kakao.com/o/shgq1hhi" style="color: #EC4899; font-weight: bold;">오픈채팅</a></li>
+<li><a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">전화 문의하기</a></li>
+<li><a href="https://open.kakao.com/o/shgq1hhi" style="color: #EC4899; font-weight: bold;">카카오톡 상담</a></li>
 </ul>
 `
 ]
@@ -591,9 +590,9 @@ blogPosts.push({
 <h3>예약 문의</h3>
 <p>파주 조리읍 24시간 출장 가능합니다. 100% 후불제로 안심하고 이용하세요!</p>
 <ul>
-<li>전화: <a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">010-2871-2457</a></li>
-<li>텔레그램: <a href="https://t.me/babyoutcallmassage" style="color: #EC4899; font-weight: bold;">@babyoutcallmassage</a></li>
-<li>카카오톡: <a href="https://open.kakao.com/o/shgq1hhi" style="color: #EC4899; font-weight: bold;">오픈채팅 바로가기</a></li>
+<li><a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">전화 문의하기</a></li>
+<li><a href="https://t.me/cc_9911" style="color: #EC4899; font-weight: bold;">텔레그램 상담</a></li>
+<li><a href="https://open.kakao.com/o/shgq1hhi" style="color: #EC4899; font-weight: bold;">카카오톡 상담</a></li>
 </ul>
 `,
   author: "레깅스 에디터",
@@ -647,8 +646,8 @@ blogPosts.push({
 <h3>예약 안내</h3>
 <p>파주 조리읍 24시간 예약 가능! 퇴근 시간에 맞춰 예약하시면 집 도착하자마자 바로 받으실 수 있습니다.</p>
 <ul>
-<li>전화: <a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">010-2871-2457</a></li>
-<li>텔레그램: <a href="https://t.me/babyoutcallmassage" style="color: #EC4899; font-weight: bold;">@babyoutcallmassage</a></li>
+<li><a href="tel:010-2871-2457" style="color: #EC4899; font-weight: bold;">전화 문의하기</a></li>
+<li><a href="https://t.me/cc_9911" style="color: #EC4899; font-weight: bold;">텔레그램 상담</a></li>
 </ul>
 `,
   author: "힐링 매거진",
@@ -695,7 +694,7 @@ blogPosts.push({
 // 파주 조리읍 후기 2 - 디시인사이드 말투
 blogPosts.push({
   id: `review-paju-jorieup-2`,
-  title: "[조리읍] 전원주택��데도 오시네요 감사합니다 ㅠㅠ",
+  title: "[조리읍] ��원주택��데도 오시네요 감사합니다 ㅠㅠ",
   excerpt: "파주 조리읍 전원주택 거주자 실제 이용 후기.",
   content: `
 <p>아 나 조리읍 전원주택 사는데</p>
