@@ -6,57 +6,43 @@ import { Phone, Send, Shield, Clock, Star } from "lucide-react"
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with mask-image gradient */}
-      <div 
-        className="absolute inset-0"
-        style={{ 
-          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)"
-        }}
-      >
-        <img 
-          src="https://i.ibb.co/nqDTxcF8/leggings-gangseo-01-jpg.webp"
-          alt="레깅스출장마사지 메인 이미지"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/20" />
       
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
-      
-      {/* Bottom gradient for smooth transition */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Shield className="w-4 h-4" />
             내상 없는 20대 출장안마 · 100% 후불제
           </div>
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight text-balance">
             <span className="text-primary">레깅스</span>출장마사지
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto text-pretty">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-pretty">
             서울 전지역 24시간 프리미엄 출장안마 서비스<br />
             검증된 전문 테라피스트가 최상의 힐링을 선사합니다
           </p>
 
           {/* Trust badges */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-10">
-            <div className="flex items-center gap-2 text-sm md:text-base text-white/90">
+            <div className="flex items-center gap-2 text-sm md:text-base">
               <Clock className="w-5 h-5 text-primary" />
               <span>30분 이내 출장</span>
             </div>
-            <div className="flex items-center gap-2 text-sm md:text-base text-white/90">
+            <div className="flex items-center gap-2 text-sm md:text-base">
               <Shield className="w-5 h-5 text-primary" />
               <span>100% 후불제</span>
             </div>
-            <div className="flex items-center gap-2 text-sm md:text-base text-white/90">
+            <div className="flex items-center gap-2 text-sm md:text-base">
               <Star className="w-5 h-5 text-primary" />
               <span>검증된 관리사</span>
             </div>
@@ -79,7 +65,7 @@ export function Hero() {
           </div>
 
           {/* Notice */}
-          <p className="mt-8 text-sm text-white/60">
+          <p className="mt-8 text-sm text-muted-foreground">
             ※ 예약금 등의 명목으로 선입금을 일절 요구하지 않습니다
           </p>
         </div>
@@ -87,8 +73,8 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full" />
+        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex items-start justify-center p-2">
+          <div className="w-1.5 h-3 bg-primary/50 rounded-full" />
         </div>
       </div>
     </section>
