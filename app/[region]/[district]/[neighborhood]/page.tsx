@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { FloatingCTA } from "@/components/floating-cta"
 import { DynamicBlogSection } from "@/components/dynamic-blog-section"
 import { InlineBenefitsBanner } from "@/components/benefits-banner"
+import { DetailHero } from "@/components/detail-hero"
 import { Button } from "@/components/ui/button"
 import { Phone, Send, MapPin, Clock, Shield, Star, ChevronRight } from "lucide-react"
 
@@ -153,90 +154,44 @@ export default async function NeighborhoodPage({ params }: PageProps) {
     : `${districtName} ${neighborhood}` // 파주시 조리읍
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
+    <div className="min-h-screen bg-[#0A0A0A] pb-20 md:pb-0">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-20 bg-secondary/50">
+      <div className="pt-20 bg-[#121212]">
         <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-primary">홈</Link>
+          <nav className="flex items-center gap-2 text-sm text-[#A0A0A0]">
+            <Link href="/" className="hover:text-[#8B0000]">홈</Link>
             <ChevronRight className="w-4 h-4" />
             {hasGu && district.parentCity && (
               <>
-                <Link href={`/${region.slug}/${districtSlug.split("-")[0]}`} className="hover:text-primary">{cityName}출장마사지</Link>
+                <Link href={`/${region.slug}/${districtSlug.split("-")[0]}`} className="hover:text-[#8B0000]">{cityName}출장마사지</Link>
                 <ChevronRight className="w-4 h-4" />
               </>
             )}
-            <Link href={`/${region.slug}/${district.slug}`} className="hover:text-primary">{hasGu ? `${guName}출장마사지` : `${districtName}출장마사지`}</Link>
+            <Link href={`/${region.slug}/${district.slug}`} className="hover:text-[#8B0000]">{hasGu ? `${guName}출장마사지` : `${districtName}출장마사지`}</Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-foreground font-medium">{neighborhood}출장마사지</span>
+            <span className="text-[#E0E0E0] font-medium">{neighborhood}출장마사지</span>
           </nav>
         </div>
       </div>
       
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-primary/10 to-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <MapPin className="w-4 h-4" />
-              {hasGu ? `${region.name} ${cityName} ${guName} ${neighborhood}` : `${region.name} ${district.name} ${neighborhood}`}
-            </div>
-            
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 text-balance">
-              <span className="text-primary">{targetLocationKeyword}</span>출장마사지
-            </h1>
-            
-            {/* 구글 로봇 매칭용 본문 첫 줄 - 타이틀 맨 앞 키워드와 100% 일치 */}
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 <strong>{targetLocationKeyword}출장마사지</strong> 전문 브랜드, 레깅스출장마사지입니다.
-            </p>
-            
-            {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm">
-                <Clock className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">30분 이내 출장</span>
-              </div>
-              <div className="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm">
-                <Shield className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">100% 후불제</span>
-              </div>
-              <div className="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm">
-                <Star className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">검증된 관리사</span>
-              </div>
-            </div>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:010-2871-2457">
-                <Button size="lg" className="gap-2 text-lg px-8 py-6">
-                  <Phone className="w-5 h-5" />
-                  전화 문의하기
-                </Button>
-              </a>
-              <a href="https://t.me/cc_9911" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="gap-2 text-lg px-8 py-6">
-                  <Send className="w-5 h-5" />
-                  텔레그램 상담
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Image */}
+      <DetailHero 
+        locationBadge={hasGu ? `${region.name} ${cityName} ${guName} ${neighborhood}` : `${region.name} ${district.name} ${neighborhood}`}
+        targetKeyword={targetLocationKeyword}
+        description={`서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${targetLocationKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`}
+      />
       
 {/* About Section */}
-      <section className="py-16 bg-card">
+      <section className="py-16 bg-[#121212]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-              {fullLocationDisplay}출장마사지 <span className="text-primary">레깅스마사지</span> 소개
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#E0E0E0]">
+              {fullLocationDisplay}출장마사지 <span className="text-[#8B0000]">레깅스마사지</span> 소개
             </h2>
             
-            <div className="prose prose-lg max-w-none text-muted-foreground">
+            <div className="prose prose-lg max-w-none text-[#A0A0A0]">
               <p className="mb-4">
                 안녕하세요, {hasGu ? `${region.name} ${cityName} ${guName} ${neighborhood}` : `${region.name} ${district.name} ${neighborhood}`} 지역 출장마사지 전문 레깅스출장마사지입니다.
               </p>
@@ -258,33 +213,33 @@ export default async function NeighborhoodPage({ params }: PageProps) {
             
             {/* Features Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-              <div className="bg-background p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-6 h-6 text-primary" />
+              <div className="bg-[#0A0A0A] border border-[#2A2A2A] p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#8B0000]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Clock className="w-6 h-6 text-[#8B0000]" />
                 </div>
-                <h3 className="font-semibold mb-2">24시간 운영</h3>
-                <p className="text-sm text-muted-foreground">언제든 연락주세요</p>
+                <h3 className="font-semibold mb-2 text-[#E0E0E0]">24시간 운영</h3>
+                <p className="text-sm text-[#A0A0A0]">언제든 연락주세요</p>
               </div>
-              <div className="bg-background p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-6 h-6 text-primary" />
+              <div className="bg-[#0A0A0A] border border-[#2A2A2A] p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#8B0000]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-6 h-6 text-[#8B0000]" />
                 </div>
-                <h3 className="font-semibold mb-2">100% 후불제</h3>
-                <p className="text-sm text-muted-foreground">선입금 절대 없음</p>
+                <h3 className="font-semibold mb-2 text-[#E0E0E0]">100% 후불제</h3>
+                <p className="text-sm text-[#A0A0A0]">선입금 절대 없음</p>
               </div>
-              <div className="bg-background p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-primary" />
+              <div className="bg-[#0A0A0A] border border-[#2A2A2A] p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#8B0000]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-6 h-6 text-[#8B0000]" />
                 </div>
-                <h3 className="font-semibold mb-2">30분 이내</h3>
-                <p className="text-sm text-muted-foreground">빠른 출장 서비스</p>
+                <h3 className="font-semibold mb-2 text-[#E0E0E0]">30분 이내</h3>
+                <p className="text-sm text-[#A0A0A0]">빠른 출장 서비스</p>
               </div>
-              <div className="bg-background p-6 rounded-xl text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-6 h-6 text-primary" />
+              <div className="bg-[#0A0A0A] border border-[#2A2A2A] p-6 rounded-xl text-center">
+                <div className="w-12 h-12 bg-[#8B0000]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Star className="w-6 h-6 text-[#8B0000]" />
                 </div>
-                <h3 className="font-semibold mb-2">검증된 관리사</h3>
-                <p className="text-sm text-muted-foreground">전문 테라피스트</p>
+                <h3 className="font-semibold mb-2 text-[#E0E0E0]">검증된 관리사</h3>
+                <p className="text-sm text-[#A0A0A0]">전문 테라피스트</p>
               </div>
             </div>
           </div>
