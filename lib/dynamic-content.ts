@@ -1,5 +1,65 @@
-// 동적 콘텐츠 생성 시스템 V2 - 시드 기반 완전 셔플 알고리즘
-// 각 동네마다 본문 텍스트가 100% 다르게 생성됨
+// 동적 콘텐츠 생성 시스템 V3 - 지역별 100% 고유 콘텐츠 생성
+// 각 동네마다 도입부, 본문, 메타데이터가 완전히 다르게 생성됨
+
+// ==================== 0. 지역별 고유 메타/인트로 생성 ====================
+// 지역 특성 형용사 뱅크
+const locationAdjectives = [
+  "활기찬", "조용한", "편리한", "깨끗한", "현대적인", "고급스러운", "쾌적한", "아늑한",
+  "트렌디한", "세련된", "번화한", "평화로운", "발전하는", "역동적인", "아름다운"
+]
+
+// 서비스 장점 뱅크
+const serviceAdvantages = [
+  "30분 내 신속 출장", "100% 후불제 안심 결제", "24시간 연중무휴", "전문 교육 이수 관리사",
+  "위생적인 1회용 시트 사용", "프리미엄 아로마 오일", "맞춤형 코스 추천", "친절한 상담"
+]
+
+// 신뢰 키워드 뱅크
+const trustKeywords = [
+  "검증된 실력", "내상 없는 안전한 서비스", "고객 만족도 1위", "단골 고객 다수",
+  "정직한 가격", "투명한 운영", "프로페셔널한 관리", "최상의 힐링"
+]
+
+// 지역별 고유 메타 description 생성 (150-160자)
+export function generateMetaDescription(locationName: string, seed: string): string {
+  const hash = hashString(seed + locationName + "meta")
+  const random = seededRandom(hash)
+  
+  const adj = pickRandom(locationAdjectives, random)
+  const adv1 = pickRandom(serviceAdvantages, random)
+  const adv2 = pickRandom(serviceAdvantages.filter(a => a !== adv1), random)
+  const trust = pickRandom(trustKeywords, random)
+  
+  // 150-160자 맞춤 템플릿 (다양한 패턴)
+  const templates = [
+    `${adj} ${locationName}에서 프리미엄 출장마사지를 경험하세요. ${adv1}, ${adv2}. ${trust}의 레깅스출장마사지가 직접 방문합니다.`,
+    `${locationName}출장마사지 전문 브랜드 레깅스. ${adv1}과 ${adv2}로 ${trust}을 약속합니다. ${adj} ${locationName} 어디서든 힐링하세요.`,
+    `대한민국 대표 ${locationName}출장안마. ${adj} 동네 어디서나 ${adv1}. ${trust}와 ${adv2}를 자랑하는 레깅스출장마사지입니다.`,
+    `${locationName} 프리미엄 홈타이 레깅스출장마사지. ${adv1}, ${adv2}. ${adj} ${locationName}에서 ${trust}의 힐링을 만나보세요.`
+  ]
+  
+  const description = pickRandom(templates, random)
+  // 160자 초과시 자르기
+  return description.length > 160 ? description.slice(0, 157) + "..." : description
+}
+
+// 지역별 고유 히어로 description 생성
+export function generateHeroDescription(locationName: string, seed: string): string {
+  const hash = hashString(seed + locationName + "hero")
+  const random = seededRandom(hash)
+  
+  const adj = pickRandom(locationAdjectives, random)
+  const adv = pickRandom(serviceAdvantages, random)
+  const trust = pickRandom(trustKeywords, random)
+  
+  const templates = [
+    `대한민국 대표 프리미엄 ${locationName}출장마사지. ${adj} ${locationName} 어디서나 30분 내 즉시 방문하여 최상의 테라피를 선사하는 레깅스출장마사지입니다.`,
+    `${adj} ${locationName}에서 편안하게 즐기는 프리미엄 출장안마. ${adv}로 ${trust}을 약속드립니다. 레깅스출장마사지와 함께하세요.`,
+    `${locationName} 전지역 24시간 프리미엄 출장서비스. ${adj} 동네 어디서든 30분 이내 방문, ${trust}의 레깅스출장마사지입니다.`
+  ]
+  
+  return pickRandom(templates, random)
+}
 
 // ==================== 1. 해시 기반 랜덤 시드 생성 ====================
 function hashString(str: string): number {
@@ -185,7 +245,7 @@ const blogConclusions = [
   "전문 관리사의 케어로 일상의 활력을 되찾으세요.",
   "몸과 마음의 균형을 찾는 첫걸음을 내딛어 보세요.",
   "건강 투자는 가장 확실한 미래 투자입니다.",
-  "오늘의 관리가 ���일의 건강을 만듭니다.",
+  "오늘의 관리가 내일의 건강을 만듭니다.",
   "편안한 휴식으로 삶의 질을 높여보세요."
 ]
 
@@ -238,12 +298,12 @@ const reviewBodyParts = [
   
   // 관리사 관련
   "관리사님 친절하고 실력도 좋으심",
-  "어깨랑 목 집중적으로 해달라고 했더니 시원하게 풀어주심",
+  "어깨랑 목 집중적으로 해달라고 했더니 시원하게 풀��주심",
   "어깨 누르시면서 여기 많이 뭉치셨네요 하시는데 소름 ㄷㄷ",
   "사무직이시죠? 하시면서 딱 필요한 부위 잡아주심",
   "운전 많이 하시죠? 하시면서 허리 풀어주시는데 신기",
   "헬스 하시죠? 물어보시더라 ㅋㅋ 근육 푸는 게 다르긴 함",
-  "서비스직이시죠? 여기 많이 붓겠다 하시면서 시원하게 풀어주심",
+  "서비스직이시죠? 여기 많이 붓겠다 하시면서 ��원하게 풀어주심",
   "많이 마셨죠? ㅎㅎ 하시면서 부드럽게 해주심",
   "프로페셔널하셔서 어색하지 않게 해주심",
   "매너 좋으셔서 편하게 받았음",
@@ -324,13 +384,16 @@ const dcExpressions = [
   "내상 없음", "강추", "추천", "개추", "ㄴㄴ", "ㄴㄴ해"
 ]
 
-// ==================== 4. 블로그 콘텐츠 생성 함수 (완전 셔플) ====================
+// ==================== 4. 블로그 콘텐츠 생성 함수 (지역 특화 인트로) ====================
 export function generateBlogContent(
   fullLocationName: string,
   seed: string
 ): { title: string; content: string; topicId: string } {
   const hash = hashString(seed + fullLocationName + "blog")
   const random = seededRandom(hash)
+  
+  // 지역 형용사 선택
+  const locAdj = pickRandom(locationAdjectives, random)
   
   // 제목 템플릿 (시드에 따라 다르게 선택)
   const titleTemplates = [
@@ -345,8 +408,18 @@ export function generateBlogContent(
   ]
   const title = pickRandom(titleTemplates, random)
   
-  // 인트로 선택 (시드 기반)
-  const selectedIntros = pickMultiple(blogIntros, 2, random)
+  // 지역 특화 인트로 (동네 이름 필수 포함)
+  const locationIntros = [
+    `${locAdj} ${fullLocationName}에서 바쁜 일상을 보내시는 분들이라면 건강 관리의 중요성을 잘 알고 계실 겁니다.`,
+    `${fullLocationName} 지역은 ${locAdj} 분위기로 많은 분들이 거주하고 계십니다. 이곳에서 일상의 피로를 풀 수 있는 방법을 소개합니다.`,
+    `${fullLocationName}에 사시거나 근무하시는 분들을 위한 특별한 건강 관리 정보입니다. ${locAdj} 동네에서 편안하게 힐링하세요.`,
+    `${locAdj} ${fullLocationName}! 이 지역에서 스트레스와 피로를 효과적으로 해소할 수 있는 방법을 알려드립니다.`,
+    `${fullLocationName}은 ${locAdj} 환경으로 많은 분들이 선호하는 지역입니다. 바쁜 일상 속 건강 관리법을 함께 알아볼까요?`
+  ]
+  const selectedLocationIntro = pickRandom(locationIntros, random)
+  
+  // 일반 인트로 (기존)
+  const selectedIntros = pickMultiple(blogIntros, 1, random)
   
   // 본문 섹션 선택 (시드 기반으로 3개 선택하고 셔플)
   const selectedSections = pickMultiple(blogMiddleSections, 3, random)
@@ -367,14 +440,14 @@ export function generateBlogContent(
   // 서비스 정보 선택
   const selectedServiceInfos = pickMultiple(serviceInfoTemplates, 3, random)
   
-  // 본문 조합
+  // 본문 조합 (지역명 반복 언급으로 SEO 강화)
   const content = `
 <h2>${fullLocationName} 출장마사지를 찾으시는 분들께</h2>
-<p>${selectedIntros[0]} ${selectedIntros[1]}</p>
-<p>${pickRandom(selectedServiceInfos, random)(fullLocationName)} 레깅스출장마사지는 전문 교육을 받은 관리사가 직접 방문하여 최상의 서비스를 제공합니다.</p>
+<p>${selectedLocationIntro} ${selectedIntros[0]}</p>
+<p>${pickRandom(selectedServiceInfos, random)(fullLocationName)} 레깅스출��마사지는 ${fullLocationName} 전지역에 전문 교육을 받은 관리사가 직접 방문하여 최상의 서비스를 제공합니다.</p>
 
 <h3>${processedSections[0].title}</h3>
-<p>${processedSections[0].paragraphs.join(' ')}</p>
+<p>${processedSections[0].paragraphs.join(' ')} ${fullLocationName}에서도 이러한 효과를 경험하실 수 있습니다.</p>
 
 <h3>${processedSections[1].title}</h3>
 <p>${processedSections[1].paragraphs.join(' ')}</p>
@@ -384,10 +457,10 @@ export function generateBlogContent(
 
 <h3>${fullLocationName} 출장마사지 이용 안내</h3>
 <p>${selectedServiceInfos.map(fn => fn(fullLocationName)).join(' ')}</p>
-<p>${selectedConclusions[0]} ${selectedConclusions[1]}</p>
+<p>${selectedConclusions[0]} ${fullLocationName}에서 레깅스출장마사지와 함께 ${selectedConclusions[1]}</p>
 
 <div style="background-color: #FCE7F3; padding: 20px; border-radius: 12px; margin: 24px 0;">
-  <h4 style="margin: 0 0 12px 0; color: #9D174D;">레깅스출장마사지 특징</h4>
+  <h4 style="margin: 0 0 12px 0; color: #9D174D;">${fullLocationName} 레깅스출장마사지 특징</h4>
   <ul style="margin: 0; padding-left: 20px; color: #BE185D;">
     <li>${fullLocationName} 전역 30분 내 방문</li>
     <li>100% 후불제 시스템</li>
@@ -403,7 +476,7 @@ export function generateBlogContent(
   return { title, content, topicId }
 }
 
-// ==================== 5. 후기 콘텐츠 생성 함수 (완전 셔플) ====================
+// ==================== 5. 후기 콘텐츠 생성 함수 (지역 특화 도입부) ====================
 export function generateReviews(
   fullLocationName: string,
   seed: string,
@@ -433,10 +506,22 @@ export function generateReviews(
     const reviewHash = hashString(seed + fullLocationName + `review-${i}`)
     const random = seededRandom(reviewHash)
     
-    // 오프닝 선택
-    const opening = pickRandom(reviewOpenings, random)
+    // 지역 특화 오프닝 (지역명 필수 포함)
+    const locationOpenings = [
+      `아 ${fullLocationName} 사시는 분들 이거 강추드림 ㄹㅇ`,
+      `${fullLocationName} 처음 불러봤는데 대박 ㄷㄷ`,
+      `${fullLocationName} 거주 중인데 후기 남김 ㅋㅋ`,
+      `와 ${fullLocationName}에서 이런 서비스 받을 줄 몰랐음`,
+      `${fullLocationName} 오피스텔인데 바로 오시네요 ㄷㄷ`,
+      `${fullLocationName} 야근하고 불렀는데 인생마사지`,
+      `${fullLocationName} 3년차 거주민 후기 남김`,
+      `${fullLocationName} 아파트 사는데 진짜 편함 ㅋㅋ`,
+      `오늘 ${fullLocationName}에서 받았는데 손맛 대박`,
+      `${fullLocationName} 새벽에 불렀는데도 30분컷 ㄷㄷ`
+    ]
+    const opening = pickRandom(locationOpenings, random)
     
-    // 상황 설명 선택
+    // 상황 설명 선택 (지역명 포함)
     const situation = pickRandom(reviewSituations, random)(fullLocationName)
     
     // 본문 파트 선택 (3-5개 랜덤 선택 후 셔플)
@@ -446,8 +531,9 @@ export function generateReviews(
     // 디시 표현 랜덤 삽입
     const dcExpr = pickMultiple(dcExpressions, 2, random)
     
-    // 클로징 선택
-    const closing = pickRandom(reviewClosings, random)
+    // 클로징 선택 (지역명 추가)
+    const baseClosing = pickRandom(reviewClosings, random)
+    const closing = `${fullLocationName} 사시면 ${baseClosing}`
     
     // 작성자 생성
     const lastName = pickRandom(lastNames, random)
@@ -462,7 +548,7 @@ export function generateReviews(
     const day = 1 + Math.floor(random() * 28)
     const date = `2024-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
     
-    // 본문 조합 (각 후기마다 완전히 다른 구성)
+    // 본문 조합 (지역명 반복으로 고유성 강화)
     const content = `
 <p style="font-size: 18px; margin-bottom: 16px;">${opening}</p>
 <p style="margin-bottom: 16px;">${situation}</p>
@@ -476,8 +562,8 @@ ${selectedBodyParts[4] ? `<p style="margin-bottom: 16px;">${selectedBodyParts[4]
 </p>
 `
     
-    // 제목 생성 (오프닝 앞부분 사용)
-    const title = `${fullLocationName} ${opening.slice(0, 25)}...`
+    // 제목 생성 (지역명 + 오프닝 핵심)
+    const title = `[${fullLocationName}] ${opening.replace(fullLocationName, '').trim().slice(0, 20)}...`
     
     reviews.push({
       id: `review-${reviewHash.toString(36)}`,

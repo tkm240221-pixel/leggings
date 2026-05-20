@@ -27,7 +27,7 @@ export function FloatingCTA() {
             <span className="sr-only">카카오톡 상담</span>
           </Button>
         </a>
-        <a href="https://t.me/babyoutcallmassage" target="_blank" rel="noopener noreferrer" aria-label="텔레그램 상담">
+        <a href="https://t.me/cc_9911" target="_blank" rel="noopener noreferrer" aria-label="텔레그램 상담">
           <Button
             size="lg"
             variant="outline"
@@ -57,7 +57,7 @@ export function FloatingCTA() {
               카톡 상담
             </Button>
           </a>
-          <a href="https://t.me/babyoutcallmassage" target="_blank" rel="noopener noreferrer" className="flex-1" aria-label="텔레그램 상담">
+          <a href="https://t.me/cc_9911" target="_blank" rel="noopener noreferrer" className="flex-1" aria-label="텔레그램 상담">
             <Button 
               size="lg" 
               className="w-full gap-1 py-5 text-sm bg-sky-500 hover:bg-sky-600 text-white"

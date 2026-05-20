@@ -43,10 +43,10 @@ export default function NotFound() {
                 href="tel:010-2871-2457"
                 className="text-primary hover:underline text-sm"
               >
-                전화: 010-2871-2457
+                전화 문의하기
               </a>
               <a
-                href="https://t.me/babyoutcallmassage"
+                href="https://t.me/cc_9911"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline text-sm"

@@ -10,6 +10,7 @@ import { InlineBenefitsBanner } from "@/components/benefits-banner"
 import { DetailHero } from "@/components/detail-hero"
 import { Button } from "@/components/ui/button"
 import { Phone, Send, MapPin, Clock, Shield, Star, ChevronRight } from "lucide-react"
+import { generateMetaDescription, generateHeroDescription } from "@/lib/dynamic-content"
 
 interface PageProps {
   params: Promise<{
@@ -56,6 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const guName = hasGu ? district.name.split(" ")[1] : null // "부천 원미구" -> "원미구"
   const isGyeonggi = region.slug === "gyeonggi"
   const districtName = getDistrictDisplayName(district.name)
+  const seed = `${region.slug}/${district.slug}/${neighborhood}`
   
   // 경기도 [동/읍 단위] 페이지 메타태그 공식
   // {{구}} {{동읍면}}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
@@ -65,16 +67,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       // 7대 도시 구가 있는 동: 원미구 상동출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
       const guDongKeyword = `${guName} ${neighborhood}`
       const canonicalUrl = `https://babyoutcallmassage.com/${region.slug}/${district.slug}/${encodeURIComponent(neighborhood)}`
+      const metaDesc = generateMetaDescription(guDongKeyword, seed)
       return {
         title: `${guDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
-        description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${guDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
+        description: metaDesc,
         keywords: `${guDongKeyword}출장마사지, ${guDongKeyword}출장안마, ${guDongKeyword}홈타이, ${neighborhood}스웨디시, ${guName}출장마사지`,
         alternates: {
           canonical: canonicalUrl,
         },
         openGraph: {
           title: `${guDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
-          description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${guDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`,
+          description: metaDesc,
           url: canonicalUrl,
           images: [{ url: 'https://babyoutcallmassage.com/og-image.jpg', width: 1200, height: 630, alt: `${guDongKeyword} 출장마사지` }],
         },
@@ -83,16 +86,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       // 일반 시의 동: 파주시 조리읍출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
       const siDongKeyword = `${districtName} ${neighborhood}`
       const canonicalUrl = `https://babyoutcallmassage.com/${region.slug}/${district.slug}/${encodeURIComponent(neighborhood)}`
+      const metaDesc = generateMetaDescription(siDongKeyword, seed)
       return {
         title: `${siDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
-        description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${siDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
+        description: metaDesc,
         keywords: `${siDongKeyword}출장마사지, ${siDongKeyword}출장안마, ${siDongKeyword}홈타이, ${neighborhood}스웨디시, ${districtName}출장마사지`,
         alternates: {
           canonical: canonicalUrl,
         },
         openGraph: {
           title: `${siDongKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
-          description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${siDongKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`,
+          description: metaDesc,
           url: canonicalUrl,
           images: [{ url: 'https://babyoutcallmassage.com/og-image.jpg', width: 1200, height: 630, alt: `${siDongKeyword} 출장마사지` }],
         },
@@ -103,16 +107,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // 서울/인천 페이지: 용산구 이태원동출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지
   const fullLocationKeyword = `${district.name} ${neighborhood}`
   const canonicalUrl = `https://babyoutcallmassage.com/${region.slug}/${district.slug}/${encodeURIComponent(neighborhood)}`
+  const metaDesc = generateMetaDescription(fullLocationKeyword, seed)
   return {
     title: `${fullLocationKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
-    description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${fullLocationKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다. 30분 이내 빠른 출장, 100% 후불제.`,
+    description: metaDesc,
     keywords: `${fullLocationKeyword}출장마사지, ${neighborhood}출장안마, ${neighborhood}스웨디시, ${neighborhood}홈타이, ${districtName}출장마사지`,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       title: `${fullLocationKeyword}출장마사지 | 프리미엄 24시홈타이안마 | 레깅스출장마사지`,
-      description: `서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${fullLocationKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`,
+      description: metaDesc,
       url: canonicalUrl,
       images: [{ url: 'https://babyoutcallmassage.com/og-image.jpg', width: 1200, height: 630, alt: `${fullLocationKeyword} 출장마사지` }],
     },
@@ -152,6 +157,12 @@ export default async function NeighborhoodPage({ params }: PageProps) {
   const targetLocationKeyword = hasGu 
     ? `${guName} ${neighborhood}` // 원미구 상동
     : `${districtName} ${neighborhood}` // 파주시 조리읍
+  
+  // 히어로 description 생성 (지역별 고유 문구)
+  const heroDescription = generateHeroDescription(
+    targetLocationKeyword, 
+    `${regionSlug}/${districtSlug}/${neighborhood}`
+  )
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] pb-20 md:pb-0">
@@ -180,7 +191,7 @@ export default async function NeighborhoodPage({ params }: PageProps) {
       <DetailHero 
         locationBadge={hasGu ? `${region.name} ${cityName} ${guName} ${neighborhood}` : `${region.name} ${district.name} ${neighborhood}`}
         targetKeyword={targetLocationKeyword}
-        description={`서울/인천/경기 수도권 전 지역 언제 어디서나 편안하게 이용하는 ${targetLocationKeyword}출장마사지 전문 브랜드, 레깅스출장마사지입니다.`}
+        description={heroDescription}
       />
       
 {/* About Section */}
