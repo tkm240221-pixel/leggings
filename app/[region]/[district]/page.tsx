@@ -144,17 +144,26 @@ export default async function DistrictPage({ params }: PageProps) {
       
       {/* Hero Section with Background Image */}
       <section className="relative pt-24 pb-16 min-h-[70vh] flex items-center">
-        {/* Background Image */}
+        {/* Background Image with mask-image gradient */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0"
           style={{ 
-            backgroundImage: "url('https://i.ibb.co/v4pB1x5r/image.jpg')",
-            filter: imageFilter
+            maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)"
           }}
-        />
+        >
+          <img 
+            src="https://i.ibb.co/23xC6kr2/leggings-gangseo-02-jpg.png"
+            alt={`${targetLocationKeyword}출장마사지 이미지`}
+            className="w-full h-full object-cover"
+            style={{ filter: imageFilter }}
+          />
+        </div>
         
-        {/* Gradient Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/40" />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+        
+        {/* Bottom gradient for smooth transition */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
         
         <div className="container mx-auto px-4 relative z-10">
