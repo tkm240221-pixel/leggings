@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h2 className="text-xl font-bold mb-4">베이비출장마사지</h2>
+            <h2 className="text-xl font-bold mb-4">레깅스출장마사지</h2>
             <p className="text-background/70 text-sm leading-relaxed">
               서울 전지역 24시간 프리미엄 출장안마<br />
               100% 후불제 · 검증된 관리사 · 빠른 출장
@@ -82,7 +82,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 pt-6 text-center">
           <p className="text-background/50 text-sm">
-            © 2024 베이비출장마사지 (babyoutcallmassage.com). All rights reserved.
+            © 2024 레깅스출장마사지 (babyoutcallmassage.com). All rights reserved.
           </p>
         </div>
       </div>

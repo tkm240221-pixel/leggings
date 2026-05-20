@@ -23,7 +23,7 @@ export function Hero() {
 
           {/* Main Title */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight text-balance">
-            <span className="text-primary">베이비</span>출장마사지
+            <span className="text-primary">레깅스</span>출장마사지
           </h1>
 
           {/* Subtitle */}

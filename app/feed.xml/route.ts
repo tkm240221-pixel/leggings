@@ -1,8 +1,8 @@
 import { blogPosts } from "@/lib/blog"
 
 const SITE_URL = "https://babyoutcallmassage.com"
-const SITE_TITLE = "베이비 출장마사지"
-const SITE_DESCRIPTION = "전문 관리사가 선사하는 힐링 케어. 서울 전 지역 30분 내 도착. 베이비 출장마사지에서 차별화된 스웨디시와 타이 마사지를 경험하세요."
+const SITE_TITLE = "레깅스 출장마사지"
+const SITE_DESCRIPTION = "전문 관리사가 선사하는 힐링 케어. 서울 전 지역 30분 내 도착. 레깅스 출장마사지에서 차별화된 스웨디시와 타이 마사지를 경험하세요."
 
 function escapeXml(text: string): string {
   if (!text) return ""

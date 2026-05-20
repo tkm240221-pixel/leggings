@@ -9,7 +9,7 @@ export function Courses() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            베이비마사지 <span className="text-primary">출장 안마코스</span>
+            레깅스마사지 <span className="text-primary">출장 안마코스</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             합리적인 가격으로 최상의 힐링을 경험하세요

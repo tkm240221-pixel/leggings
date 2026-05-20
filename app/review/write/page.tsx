@@ -67,7 +67,7 @@ export default function WriteReviewPage() {
           <div className="bg-card border rounded-2xl p-8">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">이용 후기 작성</h1>
             <p className="text-muted-foreground mb-8">
-              베이비출장마사지 이용 경험을 공유해주세요
+              레깅스출장마사지 이용 경험을 공유해주세요
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-6">

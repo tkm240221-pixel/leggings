@@ -185,7 +185,7 @@ const blogConclusions = [
   "전문 관리사의 케어로 일상의 활력을 되찾으세요.",
   "몸과 마음의 균형을 찾는 첫걸음을 내딛어 보세요.",
   "건강 투자는 가장 확실한 미래 투자입니다.",
-  "오늘의 관리가 내일의 건강을 만듭니다.",
+  "오늘의 관리가 ���일의 건강을 만듭니다.",
   "편안한 휴식으로 삶의 질을 높여보세요."
 ]
 
@@ -371,7 +371,7 @@ export function generateBlogContent(
   const content = `
 <h2>${fullLocationName} 출장마사지를 찾으시는 분들께</h2>
 <p>${selectedIntros[0]} ${selectedIntros[1]}</p>
-<p>${pickRandom(selectedServiceInfos, random)(fullLocationName)} 베이비출장마사지는 전문 교육을 받은 관리사가 직접 방문하여 최상의 서비스를 제공합니다.</p>
+<p>${pickRandom(selectedServiceInfos, random)(fullLocationName)} 레깅스출장마사지는 전문 교육을 받은 관리사가 직접 방문하여 최상의 서비스를 제공합니다.</p>
 
 <h3>${processedSections[0].title}</h3>
 <p>${processedSections[0].paragraphs.join(' ')}</p>
@@ -387,7 +387,7 @@ export function generateBlogContent(
 <p>${selectedConclusions[0]} ${selectedConclusions[1]}</p>
 
 <div style="background-color: #FCE7F3; padding: 20px; border-radius: 12px; margin: 24px 0;">
-  <h4 style="margin: 0 0 12px 0; color: #9D174D;">베이비출장마사지 특징</h4>
+  <h4 style="margin: 0 0 12px 0; color: #9D174D;">레깅스출장마사지 특징</h4>
   <ul style="margin: 0; padding-left: 20px; color: #BE185D;">
     <li>${fullLocationName} 전역 30분 내 방문</li>
     <li>100% 후불제 시스템</li>
