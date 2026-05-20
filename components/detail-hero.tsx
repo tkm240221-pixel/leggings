@@ -11,13 +11,13 @@ interface DetailHeroProps {
 
 export function DetailHero({ locationBadge, targetKeyword, description }: DetailHeroProps) {
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-[#0A0A0A] pt-20">
-      {/* Background Image - Left Side with Mask Gradient */}
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-20">
+      {/* Background Image - Left Side with Mask Gradient (absolute positioned) */}
       <div 
-        className="absolute inset-0 md:w-[55%] w-full h-full"
+        className="absolute left-0 top-0 bottom-0 w-full md:w-[55%] h-full"
         style={{
-          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%)"
+          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%)"
         }}
       >
         <img 
@@ -27,11 +27,12 @@ export function DetailHero({ locationBadge, targetKeyword, description }: Detail
         />
       </div>
       
-      {/* Mobile: Top gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/70 to-[#0A0A0A] md:hidden" />
+      {/* Dark overlay for text readability on all screens */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/50 to-[#0A0A0A]/80" />
 
+      {/* Content - Always Centered */}
       <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="text-center md:text-right md:ml-auto md:max-w-xl max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto">
           {/* Location Badge */}
           <div className="inline-flex items-center gap-2 bg-[#8B0000]/20 text-[#E0E0E0] border border-[#8B0000]/30 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <MapPin className="w-4 h-4 text-[#8B0000]" />
@@ -44,12 +45,12 @@ export function DetailHero({ locationBadge, targetKeyword, description }: Detail
           </h1>
           
           {/* Description */}
-          <p className="text-lg text-[#A0A0A0] mb-8 leading-relaxed">
+          <p className="text-lg text-[#A0A0A0] mb-8 leading-relaxed max-w-2xl mx-auto">
             {description}
           </p>
           
           {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center md:justify-end gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 bg-[#1A1A1A] border border-[#2A2A2A] px-4 py-2 rounded-full">
               <Clock className="w-4 h-4 text-[#8B0000]" />
               <span className="text-sm font-medium text-[#E0E0E0]">30분 이내 출장</span>
@@ -65,7 +66,7 @@ export function DetailHero({ locationBadge, targetKeyword, description }: Detail
           </div>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:010-2871-2457">
               <Button size="lg" className="gap-2 text-lg px-8 py-6 bg-[#8B0000] hover:bg-[#A52A2A] text-white">
                 <Phone className="w-5 h-5" />

@@ -6,12 +6,12 @@ import { Phone, Send, Shield, Clock, Star } from "lucide-react"
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]">
-      {/* Background Image - Left Side with Mask Gradient */}
+      {/* Background Image - Left Side with Mask Gradient (absolute positioned) */}
       <div 
-        className="absolute inset-0 md:w-[60%] w-full h-full"
+        className="absolute left-0 top-0 bottom-0 w-full md:w-[60%] h-full"
         style={{
-          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%)"
+          maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0) 100%)"
         }}
       >
         <img 
@@ -21,11 +21,12 @@ export function Hero() {
         />
       </div>
       
-      {/* Mobile: Top gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/70 to-[#0A0A0A] md:hidden" />
+      {/* Dark overlay for text readability on all screens */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/50 to-[#0A0A0A]/80" />
 
+      {/* Content - Always Centered */}
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="text-center md:text-right md:ml-auto md:max-w-xl max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-[#8B0000]/20 text-[#E0E0E0] border border-[#8B0000]/30 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Shield className="w-4 h-4 text-[#8B0000]" />
@@ -38,13 +39,13 @@ export function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-[#A0A0A0] mb-8 max-w-2xl md:ml-auto mx-auto text-pretty">
+          <p className="text-lg md:text-xl text-[#A0A0A0] mb-8 max-w-2xl mx-auto text-pretty">
             서울 전지역 24시간 프리미엄 출장안마 서비스<br />
             검증된 전문 테라피스트가 최상의 힐링을 선사합니다
           </p>
 
           {/* Trust badges */}
-          <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 mb-10">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-10">
             <div className="flex items-center gap-2 text-sm md:text-base text-[#E0E0E0]">
               <Clock className="w-5 h-5 text-[#8B0000]" />
               <span>30분 이내 출장</span>
@@ -60,7 +61,7 @@ export function Hero() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:010-2871-2457">
               <Button size="lg" className="gap-2 text-lg px-8 py-6 bg-[#8B0000] hover:bg-[#A52A2A] text-white">
                 <Phone className="w-5 h-5" />
