@@ -8,6 +8,7 @@ import { FloatingCTA } from "@/components/floating-cta"
 import { Button } from "@/components/ui/button"
 import { generateBlogContent, generateReviews, getFullLocationName } from "@/lib/dynamic-content"
 import { blogIndex, parseId, getEntryByIdx } from "@/lib/blog-index"
+import { getPostById, blogPosts } from "@/lib/blog"
 
 export const dynamicParams = true
 
@@ -21,7 +22,27 @@ function hashString(str: string): number {
   return Math.abs(hash)
 }
 
-function getPostContent(id: string) {
+// lib/blog.ts에서 가져온 포스트 처리
+function getPostFromBlogTs(id: string) {
+  const post = getPostById(id)
+  if (!post) return null
+  
+  return {
+    id: post.id,
+    type: post.category === "후기" ? 'review' as const : 'blog' as const,
+    title: post.title,
+    content: post.content,
+    region: post.region,
+    author: post.author,
+    createdAt: new Date(post.createdAt).toISOString().split('T')[0],
+    category: post.category,
+    fullLocationName: post.region.slice(0, 2).join(' '),
+    rating: post.rating
+  }
+}
+
+// blog-index.ts 기반 동적 생성 포스트 처리
+function getPostFromBlogIndex(id: string) {
   const parsed = parseId(id)
   if (!parsed) return null
   
@@ -62,9 +83,25 @@ function getPostContent(id: string) {
   }
 }
 
+// 통합 포스트 가져오기 함수
+function getPostContent(id: string) {
+  // 먼저 blog.ts에서 찾기 (blog-seoul-*, review-gyeonggi-* 등)
+  const blogTsPost = getPostFromBlogTs(id)
+  if (blogTsPost) return blogTsPost
+  
+  // 없으면 blog-index.ts에서 동적 생성 (blog-1, review-1 등)
+  return getPostFromBlogIndex(id)
+}
+
 export async function generateStaticParams() {
   const paths: { id: string }[] = []
   
+  // blog.ts의 포스트들 (blog-seoul-*, review-gyeonggi-* 등)
+  blogPosts.forEach((post) => {
+    paths.push({ id: post.id })
+  })
+  
+  // blog-index.ts의 동적 포스트들 (blog-1, review-1 등)
   blogIndex.forEach((entry) => {
     paths.push({ id: `blog-${entry.idx}` })
     paths.push({ id: `review-${entry.idx}` })
@@ -96,7 +133,7 @@ function StarRating({ rating }: { rating: number }) {
           className={`w-5 h-5 ${
             star <= rating
               ? "fill-yellow-400 text-yellow-400"
-              : "fill-muted text-muted"
+              : "fill-[#3A3A3A] text-[#3A3A3A]"
           }`}
         />
       ))}
@@ -113,7 +150,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
   }
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
+    <div className="min-h-screen bg-[#0A0A0A] pb-20 md:pb-0">
       <Header />
       
       <main className="pt-24 pb-16">
@@ -121,20 +158,20 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
           {/* 뒤로가기 */}
           <Link 
             href="/blog" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-[#A0A0A0] hover:text-[#8B0000] mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             블로그 목록으로
           </Link>
           
           {/* 헤더 */}
-          <article className="bg-card rounded-2xl border border-border p-8 md:p-12">
+          <article className="bg-[#161616] rounded-2xl border border-[#2A2A2A] p-8 md:p-12">
             {/* 카테고리 */}
             <div className="flex items-center gap-3 mb-6">
               <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium ${
                 post.type === 'blog' 
-                  ? "bg-blue-100 text-blue-700" 
-                  : "bg-pink-100 text-pink-700"
+                  ? "bg-[#4B0082]/30 text-[#9370DB]" 
+                  : "bg-[#8B0000]/30 text-[#CD5C5C]"
               }`}>
                 {post.type === 'blog' ? (
                   <><BookOpen className="w-4 h-4" /> 정보 블로그</>
@@ -143,7 +180,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
                 )}
               </span>
               {post.type === 'review' && (
-                <span className="flex items-center gap-1 text-sm text-green-600">
+                <span className="flex items-center gap-1 text-sm text-green-500">
                   <BadgeCheck className="w-4 h-4" />
                   인증된 후기
                 </span>
@@ -151,7 +188,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
             </div>
             
             {/* 제목 */}
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-2xl md:text-3xl font-bold text-[#E0E0E0] mb-6 leading-tight">
               {post.title}
             </h1>
             
@@ -159,49 +196,49 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ id:
             {post.type === 'review' && 'rating' in post && (
               <div className="flex items-center gap-3 mb-6">
                 <StarRating rating={post.rating} />
-                <span className="text-lg font-medium text-foreground">{post.rating}/5</span>
+                <span className="text-lg font-medium text-[#E0E0E0]">{post.rating}/5</span>
               </div>
             )}
             
             {/* 메타 정보 */}
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8 pb-8 border-b border-border">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-[#A0A0A0] mb-8 pb-8 border-b border-[#2A2A2A]">
               <span>작성자: {post.author}</span>
               <span>|</span>
               <span>{post.createdAt}</span>
               <span>|</span>
               <div className="flex gap-2">
                 {post.region.map((r, i) => (
-                  <span key={i} className="text-primary">#{r}</span>
+                  <span key={i} className="text-[#8B0000]">#{r}</span>
                 ))}
               </div>
             </div>
             
             {/* 본문 */}
             <div 
-              className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground"
+              className="prose prose-lg max-w-none prose-headings:text-[#E0E0E0] prose-p:text-[#A0A0A0] prose-strong:text-[#E0E0E0] prose-invert"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             
             {/* CTA */}
-            <div className="mt-12 pt-8 border-t border-border">
-              <div className="bg-primary/5 rounded-xl p-6 text-center">
-                <p className="text-lg font-medium text-foreground mb-2">
+            <div className="mt-12 pt-8 border-t border-[#2A2A2A]">
+              <div className="bg-[#8B0000]/10 rounded-xl p-6 text-center border border-[#8B0000]/30">
+                <p className="text-lg font-medium text-[#E0E0E0] mb-2">
                   {post.fullLocationName} 출장마사지 예약
                 </p>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-[#A0A0A0] mb-6">
                   레깅스출장마사지 | 24시간 운영 | 100% 후불제
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <a href="tel:010-5765-9956">
-                    <Button className="gap-2">
+                  <a href="tel:010-2871-2457">
+                    <Button className="gap-2 bg-[#8B0000] hover:bg-[#A52A2A] text-white">
                       <Phone className="w-4 h-4" />
                       전화문의
                     </Button>
                   </a>
-                  <a href="http://pf.kakao.com/_CYGdn/chat" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="gap-2 bg-[#FEE500] text-[#191919] border-[#FEE500] hover:bg-[#FEE500]/90">
+                  <a href="https://t.me/cc_9911" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="gap-2 bg-[#0088cc] text-white border-[#0088cc] hover:bg-[#0077b5]">
                       <MessageCircle className="w-4 h-4" />
-                      카톡상담
+                      텔레그램
                     </Button>
                   </a>
                 </div>

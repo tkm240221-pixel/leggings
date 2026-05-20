@@ -19,7 +19,7 @@ function StarRating({ rating }: { rating: number }) {
           className={`w-4 h-4 ${
             star <= rating
               ? "fill-yellow-400 text-yellow-400"
-              : "fill-muted text-muted"
+              : "fill-[#3A3A3A] text-[#3A3A3A]"
           }`}
         />
       ))}
@@ -30,26 +30,26 @@ function StarRating({ rating }: { rating: number }) {
 function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link href={`/blog/${post.id}`}>
-      <article className="bg-card border rounded-xl p-6 h-full hover:shadow-lg transition-shadow cursor-pointer">
+      <article className="bg-[#161616] border border-[#2A2A2A] rounded-xl p-6 h-full hover:shadow-lg hover:border-[#8B0000]/50 transition-all cursor-pointer">
         <div className="flex items-center gap-2 mb-3">
           <span
             className={`text-xs px-2 py-1 rounded-full font-medium ${
-              post.category === "review"
-                ? "bg-primary/10 text-primary"
-                : "bg-muted text-muted-foreground"
+              post.category === "후기"
+                ? "bg-[#8B0000]/20 text-[#8B0000]"
+                : "bg-[#2A2A2A] text-[#A0A0A0]"
             }`}
           >
-            {post.category === "review" ? "이용후기" : "블로그"}
+            {post.category === "후기" ? "이용후기" : "블로그"}
           </span>
           {post.verified && (
-            <span className="flex items-center gap-1 text-xs text-green-600">
+            <span className="flex items-center gap-1 text-xs text-green-500">
               <BadgeCheck className="w-4 h-4" />
               인증됨
             </span>
           )}
         </div>
         
-        <h3 className="font-bold text-lg mb-2 line-clamp-2">{post.title}</h3>
+        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-[#E0E0E0]">{post.title}</h3>
         
         {post.rating && (
           <div className="mb-2">
@@ -57,13 +57,13 @@ function BlogCard({ post }: { post: BlogPost }) {
           </div>
         )}
         
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+        <p className="text-[#A0A0A0] text-sm mb-4 line-clamp-2">
           {post.excerpt}
         </p>
         
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <div className="flex items-center justify-between text-xs text-[#707070]">
           <span>{post.author}</span>
-          <span>{post.createdAt}</span>
+          <span>{new Date(post.createdAt).toLocaleDateString('ko-KR')}</span>
         </div>
       </article>
     </Link>
@@ -80,13 +80,17 @@ export function BlogSection({ regionFilter, title }: BlogSectionProps) {
     : "블로그 & 이용후기")
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
+    <section className="py-16 md:py-24 bg-[#0A0A0A]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {sectionTitle}
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#E0E0E0]">
+            {sectionTitle.includes("블로그") ? (
+              <>블로그 & <span className="text-[#8B0000]">이용후기</span></>
+            ) : (
+              sectionTitle
+            )}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-[#A0A0A0] max-w-2xl mx-auto">
             실제 고객님들의 생생한 후기와 유용한 정보를 확인해보세요
           </p>
         </div>
@@ -101,7 +105,7 @@ export function BlogSection({ regionFilter, title }: BlogSectionProps) {
             
             <div className="text-center space-y-4">
               <Link href="/blog">
-                <Button variant="outline" className="gap-2">
+                <Button variant="outline" className="gap-2 border-[#8B0000] text-[#8B0000] hover:bg-[#8B0000] hover:text-white">
                   더 많은 글 보기
                   <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -109,7 +113,7 @@ export function BlogSection({ regionFilter, title }: BlogSectionProps) {
               
               <div>
                 <Link href="/review/write">
-                  <Button className="gap-2">
+                  <Button className="gap-2 bg-[#8B0000] hover:bg-[#A52A2A] text-white">
                     나도 후기 남기기
                   </Button>
                 </Link>
@@ -118,11 +122,11 @@ export function BlogSection({ regionFilter, title }: BlogSectionProps) {
           </>
         ) : (
           <div className="text-center py-12">
-            <p className="text-muted-foreground mb-4">
+            <p className="text-[#A0A0A0] mb-4">
               아직 등록된 글이 없습니다.
             </p>
             <Link href="/review/write">
-              <Button>첫 번째 후기 남기기</Button>
+              <Button className="bg-[#8B0000] hover:bg-[#A52A2A] text-white">첫 번째 후기 남기기</Button>
             </Link>
           </div>
         )}
